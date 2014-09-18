@@ -36,3 +36,12 @@ class GalleriesController < ApplicationController
       permit(:name, :description)
   end
 end
+
+                  end
+              end
+            end
+          end
+        end
+      end
+    end
+  end

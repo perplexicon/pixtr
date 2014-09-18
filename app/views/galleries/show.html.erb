@@ -1,6 +1,17 @@
-<h1><%=gallery.name %></h1>
+<%= link_to "Main", galleries_path %>
+<%= link_to "Add Image", new_gallery_image_path(@gallery) %>
+<%= link_to "Edit", "/galleries/#{@gallery.id}/edit" %>
+<%= link_to "Delete", "/galleries/#{@gallery.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+
+<h1><%= @gallery.name %></h1>
 
 <p><%= @gallery.description %></p>
 
-<%= link_to "Edit", "/galleries/#{@gallery.id}/edit" %>
-<%= link_to "Delete", "/galleries/#{@gallery.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+<% @gallery.images.each do |image| %>
+  <div>
+    <%= image_tag image.url, width:200 %>
+  </div>
+  <div>
+    <%= link_to image.name, [@gallery, image] %>
+  </div>
+<% end %></
