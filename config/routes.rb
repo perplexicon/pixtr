@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "galleries#index"
+  root to: "homes#show"
   resource :session
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :galleries do
     resources :images
   end
