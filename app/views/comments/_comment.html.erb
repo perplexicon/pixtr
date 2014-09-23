@@ -1,0 +1,5 @@
+<div>
+  <h3><%= comment.user.email %></h3>
+  <h6>Posted <%= time_ago_in_words(comment.created_at) %> ago</h6>
+  <p><%= comment.content %></p>
+</div>
