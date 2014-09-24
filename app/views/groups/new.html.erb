@@ -1,3 +1,5 @@
+<h1>Create New Gallery</h1>
+<%= form_for(@group) do |form| %>
 <%= render "errors", object: form.object %>
 <div>
   <%= form.label :name %>
@@ -7,10 +9,5 @@
   <%= form.label :description %>
   <%= form.text_area :description %>
 </div>
-<div>
-  <%= form.label :url %>
-  <%= form.text_area :url %>
-</div>
-<div>
-  <%= form.collection_check_boxes :group_ids, current_user.groups, :id, :name %>
-</div>
+  <%= form.submit "Create" %>
+<% end %>

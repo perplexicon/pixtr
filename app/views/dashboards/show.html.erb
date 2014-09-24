@@ -1,0 +1,13 @@
+<h1><%= current_user.email %>'s Dashboard</h1>
+<nav>
+</nav>
+<h2>Galleries</h2>
+<%= link_to "All Galleries", galleries_path %>
+<%= link_to "New Gallery", new_gallery_path %>
+<h4>My Galleries</h4>
+<%= render (current_user.galleries) || "No Galleries" %>
+<h2>Groups</h2>
+<%= link_to "All Groups", groups_path %>
+<%= link_to "New Group", new_group_path %>
+<h4>My Groups</h4>
+<%= render (current_user.groups) || "No Groups" %>

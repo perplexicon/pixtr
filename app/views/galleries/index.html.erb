@@ -1,11 +1,17 @@
+
 <h1>Galleries</h1>
 
 <div>
   <%= link_to "New Gallery", "/galleries/new" %>
+<%= link_to "View all Groups", groups_path %>
 </div>
 
 <div>
+  <ul>
   <% @galleries.each do |gallery| %>
+    <li>
     <%= link_to gallery.name, "galleries/#{gallery.id}" %>
+    </li>
   <% end %>
+</ul>
 </div>

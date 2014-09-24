@@ -1,0 +1,10 @@
+<%= link_to "Back to Groups", groups_path %>
+<h1><%= @group.name %></h1>
+
+<% if @group.users.index(current_user) %>
+  <%= link_to "Leave", leave_group_path(@group), method: :delete %>
+<% else %>
+  <%= link_to "Join", join_group_path(@group), method: :post %>
+<% end %>
+
+<%= link_to "Delete", group_path, method: :delete, data: { confirm: "Are you sure?" } %>

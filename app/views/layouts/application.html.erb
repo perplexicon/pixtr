@@ -10,13 +10,16 @@
 
     <div>
       <% if signed_in? %>
-        Welcome <%= current_user.email %>
+        Welcome <%= link_to current_user.email, root_path %>
         <%= link_to "Sign Out", session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign Up", new_user_path %>
         <%= link_to "Sign In", new_session_path %>
       <% end %>
     </div>
+    <% flash.each do |key, value| %>
+      <p class = "<%= key %>"><%= value %></p>
+    <% end %>
     <%= yield %>
 
   </body>
