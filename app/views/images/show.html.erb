@@ -1,15 +1,34 @@
 <nav>
-  <%= link_to "Back to Gallery", gallery_path(@image.gallery) %>
-  <%= link_to "Edit", edit_gallery_image_path %>
-  <%= link_to "Delete", gallery_image_path, method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Back to Gallery", gallery_path(@image.gallery) %>
+<%= link_to "Edit", edit_gallery_image_path %>
+<%= link_to "Delete", gallery_image_path, method: :delete, data: { confirm: "Are you sure?" } %>
 </nav>
 
 <h1><%= @image.name %></h1>
 
+<h6>Groups:</h6>
+<% @image.groups.each do |group| %>
+  <%= link_to group.name, group %>
+<% end %>
+<h6>Tags:</h6>
+<% @image.tags.each do |tag| %>
+  <%= link_to tag.name, tag %>
+<% end %>
+<div>
+<%= link_to "New Tag", new_tag_path %>
+</div>
+
 <p><%= @image.description %></p>
 
-<%= image_tag @image.url, width:200 %>
+<%= image_tag @image.url, width:500 %>
 
+<p><%= @image.likes.count %> likes</p>
+
+<% if current_user.liked?(@image) %>
+  <%= link_to "Unlike", unlike_gallery_image_path(@gallery, @image), method: :delete %>
+<% else %>
+<%= link_to "Like", like_gallery_image_path(@gallery, @image), method: :post %>
+<%end%>
 <h3>Comments for <%= @image.name %>:</h3>
 <%= render @image.comments %>
 

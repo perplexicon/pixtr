@@ -2,9 +2,15 @@ class User < ActiveRecord::Base
   has_many :galleries
   has_many :group_memberships
   has_many :groups, through: :group_memberships
+  has_many :likes
+  has_many :liked_images, through: :likes, source: :image
 
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
+
+  def member?(group)
+    groups.include?(group)
+  end
 
   def join(group)
     groups << group
@@ -12,5 +18,17 @@ class User < ActiveRecord::Base
 
   def leave(group)
     groups.delete(group)
+  end
+
+  def like(liked_image)
+    liked_images << liked_image
+  end
+
+  def liked?(liked_image)
+    liked_images.include?(liked_image)
+  end
+
+  def unlike(liked_image)
+    liked_images.delete(liked_image)
   end
 end

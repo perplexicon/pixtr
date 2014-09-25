@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   resources :galleries do
     resources :images do
       resources :comments, only: [:create]
+      member do
+        post "like" => "likes#create"
+        delete "unlike" => "likes#destroy"
+      end
     end
   end
+  resources :tags, only: [:show, :new, :create]
   resources :groups do
     member do
       post "join" => "group_memberships#create"

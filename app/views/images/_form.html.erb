@@ -12,5 +12,10 @@
   <%= form.text_area :url %>
 </div>
 <div>
+  Groups:
   <%= form.collection_check_boxes :group_ids, current_user.groups, :id, :name %>
+</div>
+<div>
+  Tags:
+  <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
 </div>
