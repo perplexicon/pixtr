@@ -1,7 +1,7 @@
 ruby '2.1.2'
 source 'https://rubygems.org'
 
-
+gem 'newrelic_rpm'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.3'
 # Use postgresql as the database for Active Record
