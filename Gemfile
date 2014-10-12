@@ -31,7 +31,6 @@ gem 'spring',        group: :development
 gem 'monban', '~> 0.1.0'
 
 group :production do
-  gem 'rails_12factor'
   gem 'thin'
 end
 # Use ActiveModel has_secure_password
